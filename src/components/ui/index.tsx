@@ -1,3 +1,1 @@
-import { Input } from './input';
-
-export { Input };
+export { NavigationBar } from './NavigationBar/NavigationBar';

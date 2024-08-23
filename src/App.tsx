@@ -1,34 +1,20 @@
 import './App.css';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { HomePage } from './pages/HomePage';
 import { BlogPage } from './pages/BlogPage';
 import { SignIn } from './pages/SignIn';
 import { SignUp } from './pages/SignUp';
+import { NavigationBar } from './components';
 
 const App = (): JSX.Element => {
   return (
     <Router>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/blog">BlogPage</Link>
-          </li>
-        </ul>
-      </nav>
+      <NavigationBar />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/blog" element={<BlogPage />} />
-        <Route path="/SignIn" element={<SignIn />} />
-        <Route path="/SignUp" element={<SignUp />} />
+        <Route path="/sign-in" element={<SignIn />} />
+        <Route path="/sign-up" element={<SignUp />} />
       </Routes>
     </Router>
   );

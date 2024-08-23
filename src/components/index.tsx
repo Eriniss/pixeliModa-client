@@ -1,3 +1,1 @@
-import { Input } from './ui';
-
-export { Input };
+export { NavigationBar } from './ui';
