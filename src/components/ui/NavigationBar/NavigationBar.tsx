@@ -10,7 +10,7 @@ const NavigationWrapper = styled.nav<NavigationWrapperProps>`
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   height: 60px;
   background-color: rgba(88, 191, 243, ${(props) => (props.isScrolled ? 0.3 : 1)});
   transition: background-color 0.3s ease-in-out;
@@ -52,7 +52,7 @@ export const NavigationBar = () => {
 
   return (
     <NavigationWrapper isScrolled={isScrolled}>
-      <LinkWrapper to="/">
+      <LinkWrapper to="/" style={{ float: 'left' }}>
         <NavigationTitleLogo>PixeliModa</NavigationTitleLogo>
       </LinkWrapper>
       <LinkWrapper to="/blog">
