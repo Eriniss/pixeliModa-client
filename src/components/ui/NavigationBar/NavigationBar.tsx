@@ -2,8 +2,10 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
+import { PixelButton } from '../PixelButton/PixelButton';
+
 interface NavigationWrapperProps {
-  isScrolled: boolean;
+  $isScrolled: boolean;
 }
 
 const NavigationWrapper = styled.nav<NavigationWrapperProps>`
@@ -12,7 +14,7 @@ const NavigationWrapper = styled.nav<NavigationWrapperProps>`
   align-items: center;
   justify-content: space-around;
   height: 60px;
-  background-color: rgba(88, 191, 243, ${(props) => (props.isScrolled ? 0.3 : 1)});
+  background-color: rgba(88, 191, 243, ${(props) => (props.$isScrolled ? 0.3 : 1)});
   transition: background-color 0.3s ease-in-out;
 `;
 
@@ -30,6 +32,8 @@ const NavigationTitleLogo = styled.div`
   font-weight: bold;
   color: #ffffff;
 `;
+
+const NavigationSignButton = styled(PixelButton)``;
 
 export const NavigationBar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -51,7 +55,7 @@ export const NavigationBar = () => {
   }, []);
 
   return (
-    <NavigationWrapper isScrolled={isScrolled}>
+    <NavigationWrapper $isScrolled={isScrolled}>
       <LinkWrapper to="/" style={{ float: 'left' }}>
         <NavigationTitleLogo>PixeliModa</NavigationTitleLogo>
       </LinkWrapper>
@@ -59,10 +63,10 @@ export const NavigationBar = () => {
         <NavigationTitleLogo>Blog</NavigationTitleLogo>
       </LinkWrapper>
       <LinkWrapper to="/sign-in">
-        <NavigationTitleLogo>SignIn</NavigationTitleLogo>
+        <NavigationSignButton label="sign-in" />
       </LinkWrapper>
       <LinkWrapper to="/sign-up">
-        <NavigationTitleLogo>SignUp</NavigationTitleLogo>
+        <NavigationSignButton label="sign-up" type="primary" />
       </LinkWrapper>
     </NavigationWrapper>
   );
