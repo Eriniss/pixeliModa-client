@@ -3,7 +3,10 @@ import styled from 'styled-components';
 type PixelButtonTypes = {
   label: string | number;
   type?: string;
+  htmlType?: 'button' | 'submit' | 'reset';
   width?: string;
+  disabled?: boolean;
+  onClick?: (e: any) => any;
 };
 
 const PixelInputBox = styled.button<PixelButtonWidthType>`
@@ -13,10 +16,16 @@ const PixelInputBox = styled.button<PixelButtonWidthType>`
 type PixelButtonWidthType = { $width?: string };
 
 export const PixelButton = (props: PixelButtonTypes) => {
-  const { label, type, width } = props;
+  const { label, type, htmlType, width, disabled, onClick } = props;
 
   return (
-    <PixelInputBox type="button" className={`nes-btn is-${type}`} $width={width}>
+    <PixelInputBox
+      type={htmlType}
+      className={`nes-btn is-${type}`}
+      $width={width}
+      disabled={disabled}
+      onClick={onClick}
+    >
       {label}
     </PixelInputBox>
   );

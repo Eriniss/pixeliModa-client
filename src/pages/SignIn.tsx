@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 import { PixelInput, PixelButton } from '../components/ui';
+import { getSignIn } from '../components/api/getSignIn';
 
-const SignInWrraper = styled.div`
+const SignInWrapper = styled.div`
   width: 100%;
 `;
 
@@ -38,14 +39,39 @@ const SignInput = styled(PixelInput)`
   }
 `;
 
-const SignInButton = styled(PixelButton)``;
+const SignInButton = styled(PixelButton)`
+  /* 추가적인 스타일이 필요하다면 여기에 작성 */
+`;
 
 export const SignIn = () => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean>(false);
+
+  const handleClickSignIn = async (): Promise<void> => {
+    if (!email || !password) {
+      setError('Email and Password are required');
+      return;
+    }
+
+    setError(null);
+    setLoading(true);
+
+    try {
+      const response = await getSignIn({ email, password });
+      // 로그인 성공 시의 처리 로직 (예: 리다이렉션)
+      console.log('Sign in successful:', response.data);
+    } catch (error) {
+      setError('Failed to sign in. Please try again.');
+      console.error('Sign in error:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
-    <SignInWrraper>
+    <SignInWrapper>
       <SignInContainer>
         <SignInTitle>Sign in</SignInTitle>
         <SignInContainer className="nes-field">
@@ -60,15 +86,27 @@ export const SignIn = () => {
             width="480px"
           />
         </SignInContainer>
+        {error && <div style={{ color: 'red' }}>{error}</div>}
         <SignInContainer>
           <SignInButtonContainer>
-            <SignInButton label="Sign In" width="480px" />
+            <SignInButton
+              type="button" // HTML의 버튼 타입
+              label="Sign In"
+              width="480px"
+              onClick={handleClickSignIn}
+              disabled={loading} // 로딩 중에는 버튼 비활성화
+            />
           </SignInButtonContainer>
           <SignInButtonContainer>
-            <SignInButton label="Sign Up" type="primary" width="480px" />
+            <SignInButton
+              htmlType="button" // HTML의 버튼 타입
+              label="Sign Up"
+              type="primary"
+              width="480px"
+            />
           </SignInButtonContainer>
         </SignInContainer>
       </SignInContainer>
-    </SignInWrraper>
+    </SignInWrapper>
   );
 };
