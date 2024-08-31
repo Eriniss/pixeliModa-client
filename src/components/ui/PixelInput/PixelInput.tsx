@@ -25,7 +25,6 @@ export const PixelInput = (props: PixelInputTypes) => {
     <div className="nes-field">
       <label htmlFor="name_field">{label}</label>
       <PixelInputBox
-        id="name_field"
         className={`nes-input is-${inputType}`}
         defaultValue={defaultValue}
         value={value}
