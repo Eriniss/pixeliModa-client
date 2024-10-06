@@ -6,10 +6,12 @@ type SignInIdPwTypes = {
   password: string;
 };
 
-export const getSignIn = async (props: SignInIdPwTypes): Promise<AxiosResponse<any>> => {
+export const getSignIn = async (
+  props: SignInIdPwTypes
+): Promise<AxiosResponse<any>> => {
   const { email, password } = props;
 
-  const apiUrl = 'http://localhost:8080/users/sign-in';
+  const apiUrl = 'http://localhost:3030/users/sign-in';
   const timeout = Number(process.env.API_TIMEOUT) || 10000;
 
   const config: AxiosRequestConfig = {
