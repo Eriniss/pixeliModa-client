@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import styled from 'styled-components';
+import { Base64 } from 'js-base64';
 import { PixelInput, PixelButton } from '../components/ui';
 import { getSignIn } from '../components/api/getSignIn';
 
@@ -39,9 +40,7 @@ const SignInput = styled(PixelInput)`
   }
 `;
 
-const SignInButton = styled(PixelButton)`
-  /* 추가적인 스타일이 필요하다면 여기에 작성 */
-`;
+const SignInButton = styled(PixelButton)``;
 
 export const SignIn = () => {
   const [email, setEmail] = useState<string>('');
@@ -67,6 +66,12 @@ export const SignIn = () => {
       if (token) {
         localStorage.setItem('jwtToken', token);
         console.log('Token saved to localStorage');
+
+        const base64Payload: string = token.split('.')[1];
+
+        // Base64 디코딩
+        const decodedPayload: string = Base64.decode(base64Payload);
+        console.log(`Decoded Payload: ${decodedPayload}`);
       }
     } catch (error) {
       setError('Failed to sign in. Please try again.');
