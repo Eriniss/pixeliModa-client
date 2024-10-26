@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import styled from 'styled-components';
-import { Base64 } from 'js-base64';
 import { PixelInput, PixelButton } from '../components/ui';
 import { getSignIn } from '../components/api/getSignIn';
+import { jwtDecode } from '../components/func/jwtDecode';
 
 const SignInWrapper = styled.div`
   width: 100%;
@@ -67,11 +67,7 @@ export const SignIn = () => {
         localStorage.setItem('jwtToken', token);
         console.log('Token saved to localStorage');
 
-        const base64Payload: string = token.split('.')[1];
-
-        // Base64 디코딩
-        const decodedPayload: string = Base64.decode(base64Payload);
-        console.log(`Decoded Payload: ${decodedPayload}`);
+        console.log(`Decoded Payload: ${jwtDecode(token)}`);
       }
     } catch (error) {
       setError('Failed to sign in. Please try again.');
