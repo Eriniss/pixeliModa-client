@@ -81,35 +81,40 @@ export const SignIn = () => {
     <SignInWrapper>
       <SignInContainer>
         <SignInTitle>Sign in</SignInTitle>
-        <SignInContainer className="nes-field">
-          <SignInput value={email} onChange={(e) => setEmail(e.target.value)} label="Email" width="480px" />
+        <SignInContainer className='nes-field'>
+          <SignInput
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            label='Email'
+            width='480px'
+          />
         </SignInContainer>
-        <SignInContainer className="nes-field">
+        <SignInContainer className='nes-field'>
           <SignInput
             value={password}
-            type="password"
+            type='password'
             onChange={(e) => setPassword(e.target.value)}
-            label="Password"
-            width="480px"
+            label='Password'
+            width='480px'
           />
         </SignInContainer>
         {error && <div style={{ color: 'red' }}>{error}</div>}
         <SignInContainer>
           <SignInButtonContainer>
             <SignInButton
-              type="button" // HTML의 버튼 타입
-              label="Sign In"
-              width="480px"
+              type='button' // HTML의 버튼 타입
+              label='Sign In'
+              width='480px'
               onClick={handleClickSignIn}
               disabled={loading} // 로딩 중에는 버튼 비활성화
             />
           </SignInButtonContainer>
           <SignInButtonContainer>
             <SignInButton
-              htmlType="button" // HTML의 버튼 타입
-              label="Sign Up"
-              type="primary"
-              width="480px"
+              htmlType='button' // HTML의 버튼 타입
+              label='Sign Up'
+              type='primary'
+              width='480px'
             />
           </SignInButtonContainer>
         </SignInContainer>
