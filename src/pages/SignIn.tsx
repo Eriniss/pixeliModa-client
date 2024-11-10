@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 import { PixelInput, PixelButton } from '../components/ui';
 import { getSignIn } from '../components/api/getSignIn';
 
@@ -42,6 +43,7 @@ const SignInput = styled(PixelInput)`
 const SignInButton = styled(PixelButton)``;
 
 export const SignIn = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [error, setError] = useState<string | null>(null);
@@ -62,6 +64,7 @@ export const SignIn = () => {
 
       if (token) {
         localStorage.setItem('jwtToken', token);
+        navigate('/blog');
       }
     } catch (error) {
       setError('Failed to sign in. Please try again.');
@@ -75,41 +78,25 @@ export const SignIn = () => {
     <SignInWrapper>
       <SignInContainer>
         <SignInTitle>Sign in</SignInTitle>
-        <SignInContainer className='nes-field'>
-          <SignInput
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            label='Email'
-            width='480px'
-          />
+        <SignInContainer className="nes-field">
+          <SignInput value={email} onChange={(e) => setEmail(e.target.value)} label="Email" width="480px" />
         </SignInContainer>
-        <SignInContainer className='nes-field'>
+        <SignInContainer className="nes-field">
           <SignInput
             value={password}
-            type='password'
+            type="password"
             onChange={(e) => setPassword(e.target.value)}
-            label='Password'
-            width='480px'
+            label="Password"
+            width="480px"
           />
         </SignInContainer>
         {error && <div style={{ color: 'red' }}>{error}</div>}
         <SignInContainer>
           <SignInButtonContainer>
-            <SignInButton
-              type='button' // HTML의 버튼 타입
-              label='Sign In'
-              width='480px'
-              onClick={handleClickSignIn}
-              disabled={loading} // 로딩 중에는 버튼 비활성화
-            />
+            <SignInButton type="button" label="Sign In" width="480px" onClick={handleClickSignIn} disabled={loading} />
           </SignInButtonContainer>
           <SignInButtonContainer>
-            <SignInButton
-              htmlType='button' // HTML의 버튼 타입
-              label='Sign Up'
-              type='primary'
-              width='480px'
-            />
+            <SignInButton htmlType="button" label="Sign Up" type="primary" width="480px" />
           </SignInButtonContainer>
         </SignInContainer>
       </SignInContainer>

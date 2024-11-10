@@ -6,9 +6,7 @@ type SignInIdPwTypes = {
   password: string;
 };
 
-export const getSignIn = async (
-  props: SignInIdPwTypes
-): Promise<AxiosResponse<any>> => {
+export const getSignIn = async (props: SignInIdPwTypes): Promise<AxiosResponse<any>> => {
   const { email, password } = props;
 
   const apiUrl = `${process.env.REACT_APP_API_URL}/users/sign-in`; //|| 'http://localhost:8080';
