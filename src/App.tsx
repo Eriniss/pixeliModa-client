@@ -5,6 +5,7 @@ import { BlogPage } from './pages/BlogPage';
 import { SignIn } from './pages/SignIn';
 import { SignUp } from './pages/SignUp';
 import { NavigationBar } from './components';
+import { PrivateRoute } from './components/func/PrivateRoute';
 
 const App = (): JSX.Element => {
   return (
@@ -12,9 +13,16 @@ const App = (): JSX.Element => {
       <NavigationBar />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/blog" element={<BlogPage />} />
-        <Route path="/sign-in" element={<SignIn />} />
-        <Route path="/sign-up" element={<SignUp />} />
+        <Route
+          path="/blog"
+          element={
+            <PrivateRoute>
+              <BlogPage />
+            </PrivateRoute>
+          }
+        />
+        <Route path="/signIn" element={<SignIn />} />
+        <Route path="/signUp" element={<SignUp />} />
       </Routes>
     </Router>
   );

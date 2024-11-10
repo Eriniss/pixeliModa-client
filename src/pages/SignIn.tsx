@@ -2,7 +2,6 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import { PixelInput, PixelButton } from '../components/ui';
 import { getSignIn } from '../components/api/getSignIn';
-import { jwtDecode } from '../components/func/jwtDecode';
 
 const SignInWrapper = styled.div`
   width: 100%;
@@ -59,15 +58,10 @@ export const SignIn = () => {
 
     try {
       const response = await getSignIn({ email, password });
-      // 로그인 성공 시의 처리 로직 (예: 리다이렉션)
-      console.log('Sign in successful:', response.data);
       const token = response.data.token;
 
       if (token) {
         localStorage.setItem('jwtToken', token);
-        console.log('Token saved to localStorage');
-
-        console.log(`Decoded Payload: ${jwtDecode(token)}`);
       }
     } catch (error) {
       setError('Failed to sign in. Please try again.');

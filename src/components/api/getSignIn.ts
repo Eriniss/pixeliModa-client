@@ -29,7 +29,6 @@ export const getSignIn = async (
 
   try {
     const response = await axios(config);
-    console.log('Response Data:', response.data); // 응답 데이터 확인
     return response;
   } catch (error) {
     console.error('Error during sign in:', error);

@@ -62,11 +62,11 @@ export const NavigationBar = () => {
       <LinkWrapper to="/blog">
         <NavigationTitleLogo>Blog</NavigationTitleLogo>
       </LinkWrapper>
-      <LinkWrapper to="/sign-in">
-        <NavigationSignButton label="sign-in" />
+      <LinkWrapper to="/signIn">
+        <NavigationSignButton label="Sign in" />
       </LinkWrapper>
-      <LinkWrapper to="/sign-up">
-        <NavigationSignButton label="sign-up" type="primary" />
+      <LinkWrapper to="/signUp">
+        <NavigationSignButton label="Sign up" type="primary" />
       </LinkWrapper>
     </NavigationWrapper>
   );
