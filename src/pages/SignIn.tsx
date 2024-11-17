@@ -2,7 +2,7 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import { PixelInput, PixelButton } from '../components/ui';
-import { getSignIn } from '../components/api/getSignIn';
+import { getSignIn } from '../components/api/User/getSignIn';
 
 const SignInWrapper = styled.div`
   width: 100%;
