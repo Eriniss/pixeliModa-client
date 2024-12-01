@@ -5,7 +5,7 @@ import { BlogPage } from './pages/BlogPage';
 import { SignIn } from './pages/SignIn';
 import { SignUp } from './pages/SignUp';
 import { NavigationBar } from './components';
-import { PrivateRoute } from './components/func/PrivateRoute';
+import { PrivateRoute } from './components/util/PrivateRoute';
 
 const App = (): JSX.Element => {
   return (
