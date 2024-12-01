@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-type PixelContainerType = {
+type PixelCardType = {
   title: string;
   content: string;
 };
@@ -9,7 +9,7 @@ const BlogContainer = styled.div`
   padding: 40px;
 `;
 
-export const PixelContainer = ({ title, content }: PixelContainerType): JSX.Element => {
+export const PixelCard = ({ title, content }: PixelCardType): JSX.Element => {
   return (
     <BlogContainer>
       <div className="nes-container with-title is-centered">
