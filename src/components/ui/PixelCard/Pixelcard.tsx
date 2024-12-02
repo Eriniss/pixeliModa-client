@@ -6,7 +6,7 @@ type PixelCardType = {
 };
 
 const BlogContainer = styled.div`
-  padding: 40px;
+  padding: 10px;
 `;
 
 export const PixelCard = ({ title, content }: PixelCardType): JSX.Element => {
